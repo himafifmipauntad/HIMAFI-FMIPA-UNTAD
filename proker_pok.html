@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POK</title>
+<title>Divisi POK</title>
 <meta name="author" content="HIMAFI FMIPA Universitas Tadulako">
 <meta name="description" content="Website resmi Himpunan Mahasiswa Fisika FMIPA Universitas Tadulako yang memuat kajian, kegiatan, dan informasi organisasi.">
 <meta name="keywords" content="HIMAFI, FMIPA, Universitas Tadulako, Himpunan Mahasiswa Fisika, UNTAD">
@@ -11,7 +11,6 @@
 <link rel="icon" type="image/png" href="img/HIMAFI.png">
 <link rel="shortcut icon" href="img/LOGO HIMAFI NO BG.png">
 <link rel="apple-touch-icon" href="img/LOGO HIMAFI NO BG.png">
-
 <style>
 :root{
 --primary:#1f2f8f;
@@ -71,23 +70,6 @@ width:80px;
 }
 
 /* BREADCRUMB */
-.breadcrumb{
-padding: 0 15px;
-font-size:14px;
-margin:10px auto;
-max-width:1000px;
-}
-
-.breadcrumb a{
-text-decoration:none;
-color:var(--primary);
-font-weight:bold;
-}
-
-.breadcrumb a:hover{
-text-decoration:underline;
-}
-
 /* CONTAINER */
 .container{
 flex:1;
@@ -115,68 +97,19 @@ font-weight:bold;
 }
 
 /* FOOTER */
-.footer-content{
-max-width:1000px;
-margin:auto;
-text-align:center;
-}
-
-.footer-content h2{
-margin:0 0 20px 0;
-}
-
-.footer-links{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:20px;
-}
-
-.footer-links a{
-display:flex;
-align-items:center;
-justify-content:center;
-width:45px;
-height:45px;
-text-decoration:none;
-transition:0.3s;
-}
-
-.footer-links img{
-width:32px;
-height:32px;
-object-fit:contain;
-display:block;
-}
-
-.footer-links a:hover{
-transform:scale(1.15);
-}
-
-.copyright{
-margin-top:20px;
-padding-top:15px;
-border-top:1px solid rgba(255,255,255,0.25);
-font-size:13px;
-opacity:0.85;
-}
-
 footer{
 text-align:center;
-padding:30px 10px;
+padding:20px;
 color:white;
-
-background:
-url("img/header_footer.png");
-
+background:url("img/header_footer.png");
 background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-
-margin-top:40px;
+margin-top:auto;
 }
 </style>
 
+<link rel="canonical" href="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/proker_pok.html">
+<meta property="og:title" content="Divisi POK"><meta property="og:type" content="website"><meta property="og:url" content="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/proker_pok.html">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -192,12 +125,12 @@ Fakultas Matematika dan Ilmu Pengetahuan Alam<br>
 Universitas Tadulako
 </p>
 </header>
+<button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Buka menu navigasi">☰</button>
 
-<div class="breadcrumb">
-<a href="index.html">Beranda</a> /
-<a href="proker.html">Program Kerja</a> / POK
-</div>
-
+<div class="site-menu-backdrop" aria-hidden="true"></div>
+<nav class="site-menu" id="site-menu" aria-label="Menu utama">
+<a href="index.html">Beranda</a><a href="proker.html">Program Kerja</a><a href="anggota.html">Anggota</a>
+</nav>
 <div class="container">
 
 <h2>Program Kerja Divisi POK</h2>
@@ -216,39 +149,24 @@ Universitas Tadulako
 
 </div>
 
-<footer id="contact">
+<footer id="contact"><div class="footer-content"><h2>Hubungi Kami</h2><div class="footer-links">
+<a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="img/Instagram.png" alt="Instagram"></a>
+<a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="img/Tiktok.png" alt="TikTok"></a>
+<a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email"><img src="img/Gmail.png" alt="Email"></a>
+<a href="https://x.com/HimafiUntad" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="img/x.png" alt="X"></a>
+</div><p class="copyright">© 2026 HIMAFI FMIPA Universitas Tadulako</p></div></footer>
 
-<div class="footer-content">
+<script>
 
-<h2>Hubungi Kami</h2>
+(() => {
+  const button=document.querySelector(".site-menu-toggle"), menu=document.querySelector(".site-menu"), backdrop=document.querySelector(".site-menu-backdrop");
+  if(!button||!menu||!backdrop)return;
+  const close=()=>{document.body.classList.remove("site-menu-open");button.setAttribute("aria-expanded","false");button.textContent="☰";button.setAttribute("aria-label","Buka menu navigasi")};
+  button.addEventListener("click",()=>{const open=document.body.classList.toggle("site-menu-open");button.setAttribute("aria-expanded",String(open));button.textContent=open?"×":"☰";button.setAttribute("aria-label",open?"Tutup menu navigasi":"Buka menu navigasi")});
+  backdrop.addEventListener("click",close); menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",close));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+})();
 
-<div class="footer-links">
-
-<a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" aria-label="Instagram">
-<img src="img/Instagram.png" alt="Instagram">
-</a>
-
-<a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" aria-label="TikTok">
-<img src="img/Tiktok.png" alt="TikTok">
-</a>
-
-<a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email">
-<img src="img/Gmail.png" alt="Email">
-</a>
-
-<a href="https://x.com/HimafiUntad" target="_blank" aria-label="X">
-<img src="img/x.png" alt="X">
-</a>
-
-</div>
-
-<p class="copyright">
-© 2026 HIMAFI FMIPA Universitas Tadulako
-</p>
-
-</div>
-
-</footer>
-
+</script>
 </body>
 </html>
