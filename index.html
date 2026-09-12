@@ -29,10 +29,10 @@
     .menu-toggle { position:absolute; left:clamp(12px,3vw,32px); bottom:12px; display:grid; width:44px; height:40px; place-items:center; padding:0; color:#fff; cursor:pointer; border:1px solid rgba(255,255,255,.65); border-radius:8px; background:rgba(9,28,78,.42); font:700 1.3rem/1 Arial,sans-serif; }
     .menu-toggle:hover, .menu-toggle:focus-visible { background:rgba(255,255,255,.2); outline:2px solid #fff; outline-offset:2px; }
     .menu-backdrop { position:fixed; inset:0; z-index:20; visibility:hidden; opacity:0; background:rgba(4,13,32,.55); transition:opacity .25s,visibility .25s; }
-    .site-nav { position:fixed; z-index:30; inset:0 auto 0 0; width:min(82vw,310px); padding:24px 18px; transform:translateX(-101%); color:#fff; background:var(--header) center / cover no-repeat; box-shadow:8px 0 24px rgba(0,0,0,.3); transition:transform .25s ease; }
+    .site-nav { position:fixed; z-index:30; inset:0 auto 0 0; display:flex; flex-direction:column; align-items:stretch; gap:4px; width:min(82vw,310px); padding:24px 18px; transform:translateX(-101%); color:#fff; background:var(--header) center / cover no-repeat; box-shadow:8px 0 24px rgba(0,0,0,.3); transition:transform .25s ease; }
     .site-nav::before { content:"Menu"; display:block; padding:5px 8px 18px; border-bottom:1px solid rgba(255,255,255,.28); font-size:1.22rem; font-weight:700; }
     .nav-inner { display:flex; flex-direction:column; padding-top:15px; }
-    .site-nav a { padding:14px 12px; color:#fff; text-decoration:none; font-weight:700; border-radius:8px; }
+    .site-nav a { display:block; width:100%; box-sizing:border-box; padding:14px 12px; color:#fff; text-decoration:none; font-weight:700; border-radius:8px; }
     .site-nav a:hover, .site-nav a:focus-visible { color:#fff; background:rgba(255,255,255,.17); outline:2px solid rgba(255,255,255,.75); outline-offset:-2px; }
     body.menu-open { overflow:hidden; }
     body.menu-open .menu-backdrop { visibility:visible; opacity:1; }
