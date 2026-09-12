@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" href="img/HIMAFI.png">
 <link rel="shortcut icon" href="img/LOGO HIMAFI NO BG.png">
 <link rel="apple-touch-icon" href="img/LOGO HIMAFI NO BG.png">
-<meta name="description" content="Website resmi HIMAFI FMIPA Universitas Tadulako yang memuat kajian mahasiswa, analisis kebakaran Parigi Moutong, dan informasi ilmiah berbasis sains.">
+
 
 <style>
 
@@ -96,24 +96,6 @@ text-align:justify;
 text-indent:0px;
 margin-bottom:15px;
 }
-
-.breadcrumb{
-padding: 0 15px;
-font-size:14px;
-margin:10px auto;
-max-width:1000px;
-}
-
-.breadcrumb a{
-text-decoration:none;
-color:var(--primary);
-font-weight:bold;
-}
-
-.breadcrumb a:hover{
-text-decoration:underline;
-}
-
 .container{
 max-width:1000px;
 margin:auto;
@@ -325,12 +307,18 @@ padding:10px;
 }
 
 </style>
-
+<script src="https://polyfill.io"></script>
+<script id="MathJax-script" async src="https://jsdelivr.net"></script>
+<link rel="canonical" href="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/kajian2.html">
+<meta property="og:title" content="Permasalahan Sampah di Kota Palu: Kajian Dampak Lingkungan dan Solusi dalam Perspektif Fisika"><meta property="og:type" content="website"><meta property="og:url" content="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/kajian2.html">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
+
+
 
 <img src="img/LOGO OUTLINE UNTAD.png" class="logo-kiri">
 <img src="img/logo himafi outline.png" class="logo-kanan">
@@ -344,15 +332,12 @@ Universitas Tadulako
 </p>
 
 </header>
+<button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Buka menu navigasi">☰</button>
 
-<div class="breadcrumb">
-<a href="index.html">Beranda</a> > 
-<a href="proker.html">Program Kerja</a> >
-<a href="proker_akpem.html">AKPEM</a> >
-<a href="akpem_kajian.html">Kajian</a> >
-Permasalahan Sampah di Kota Palu: Kajian Dampak Lingkungan dan Solusi dalam Perspektif Fisika
-</div>
-
+<div class="site-menu-backdrop" aria-hidden="true"></div>
+<nav class="site-menu" id="site-menu" aria-label="Menu utama">
+<a href="index.html">Beranda</a><a href="proker.html">Program Kerja</a><a href="anggota.html">Anggota</a>
+</nav>
 <div class="container">
 
 <h1>Permasalahan Sampah di Kota Palu: Kajian Dampak Lingkungan dan Solusi dalam Perspektif Fisika</h1>
@@ -520,15 +505,15 @@ Plastik yang sudah rapuh secara kimiawi kemudian hancur secara mekanis oleh debu
 </p>
 
 <div class="image-container">
-    <img src="img/Diagram.jpeg" alt="Diagram arus sungai menuju Teluk Palu">
+    <img src="-" alt="Diagram arus sungai menuju Teluk Palu">
     <div class="image-caption">
        Diagram arus sungai menuju Teluk Palu.
     </div>
     <div class="image-source">
         Sumber foto:
-        <a href="https://jurnal.isdikkieraha.ac.id/index.php/kuantum/article/download/383/274"
+        <a "#"
            target="_blank">
-           Jurnal Kie Raha
+           -
         </a>
     </div>
 </div>
@@ -585,11 +570,9 @@ Selain skema PLTSa pembakaran langsung, pendekatan termokimia melalui teknologi 
 
 <p>
 Banyak jenis sampah, terutama plastik dan kardus, memiliki volume besar tetapi massa yang relatif kecil. Melalui prinsip tekanan dalam fisika, volume sampah dapat diperkecil dengan cara dipadatkan.<br>
-<span class = center-text>P=F/A</span><br>
-di mana:<br>
-P = Tekanan (Pa)<br>
-F = Gaya (N)<br>
-A = Luas penampang (m²)<br>
+
+$$P=\frac{F}{A}$$<br>
+
 Semakin besar tekanan yang diberikan, semakin kecil volume sampah yang dihasilkan. Cara ini dapat menghemat ruang penyimpanan dan mempermudah proses pengangkutan.
 </p>
 
@@ -599,7 +582,7 @@ Selain itu, prinsip massa jenis digunakan untuk memisahkan sampah berdasarkan ke
 </p>
 
 <div class="image-container">
-    <img src="img/Pirolisis.png" alt="Skema PLTSa atau pirolisis">
+    <img src="-" alt="Skema PLTSa atau pirolisis">
     <div class="image-caption">
         Skema PLTSa atau pirolisis.
     </div>
@@ -617,39 +600,24 @@ Selain itu, prinsip massa jenis digunakan untuk memisahkan sampah berdasarkan ke
 
 </div> 
   
-<footer id="contact">
+<footer id="contact"><div class="footer-content"><h2>Hubungi Kami</h2><div class="footer-links">
+<a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="img/Instagram.png" alt="Instagram"></a>
+<a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="img/Tiktok.png" alt="TikTok"></a>
+<a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email"><img src="img/Gmail.png" alt="Email"></a>
+<a href="https://x.com/HimafiUntad" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="img/x.png" alt="X"></a>
+</div><p class="copyright">© 2026 HIMAFI FMIPA Universitas Tadulako</p></div></footer>
 
-<div class="footer-content">
+<script>
 
-<h2>Hubungi Kami</h2>
+(() => {
+  const button=document.querySelector(".site-menu-toggle"), menu=document.querySelector(".site-menu"), backdrop=document.querySelector(".site-menu-backdrop");
+  if(!button||!menu||!backdrop)return;
+  const close=()=>{document.body.classList.remove("site-menu-open");button.setAttribute("aria-expanded","false");button.textContent="☰";button.setAttribute("aria-label","Buka menu navigasi")};
+  button.addEventListener("click",()=>{const open=document.body.classList.toggle("site-menu-open");button.setAttribute("aria-expanded",String(open));button.textContent=open?"×":"☰";button.setAttribute("aria-label",open?"Tutup menu navigasi":"Buka menu navigasi")});
+  backdrop.addEventListener("click",close); menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",close));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+})();
 
-<div class="footer-links">
-
-<a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" aria-label="Instagram">
-<img src="img/Instagram.png" alt="Instagram">
-</a>
-
-<a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" aria-label="TikTok">
-<img src="img/Tiktok.png" alt="TikTok">
-</a>
-
-<a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email">
-<img src="img/Gmail.png" alt="Email">
-</a>
-
-<a href="https://x.com/HimafiUntad" target="_blank" aria-label="X">
-<img src="img/x.png" alt="X">
-</a>
-
-</div>
-
-<p class="copyright">
-© 2026 HIMAFI FMIPA Universitas Tadulako
-</p>
-
-</div>
-
-</footer>
-
+</script>
 </body>
 </html>
