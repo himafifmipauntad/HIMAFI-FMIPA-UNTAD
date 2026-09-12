@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HIMAFI FMIPA UNTAD</title>
+<title>Program Kerja HIMAFI</title>
 <meta name="author" content="HIMAFI FMIPA Universitas Tadulako">
 <meta name="description" content="Website resmi Himpunan Mahasiswa Fisika FMIPA Universitas Tadulako yang memuat kajian, kegiatan, dan informasi organisasi.">
 <meta name="keywords" content="HIMAFI, FMIPA, Universitas Tadulako, Himpunan Mahasiswa Fisika, UNTAD">
@@ -11,10 +11,9 @@
 <link rel="icon" type="image/png" href="img/HIMAFI.png">
 <link rel="shortcut icon" href="img/LOGO HIMAFI NO BG.png">
 <link rel="apple-touch-icon" href="img/LOGO HIMAFI NO BG.png">
-<meta name="description" content="Website resmi HIMAFI FMIPA Universitas Tadulako yang memuat kajian mahasiswa, analisis kebakaran Parigi Moutong, dan informasi ilmiah berbasis sains.">
+
 
 <style>
-
 :root{
 --primary:#1f2f8f;
 --secondary:#19c2c2;
@@ -22,6 +21,7 @@
 --hover:#16236b;
 }
 
+/* BODY */
 body{
 margin:0;
 font-family:Arial;
@@ -73,23 +73,6 @@ width:80px;
 }
 
 /* BREADCRUMB */
-.breadcrumb{
-padding: 0 15px;
-font-size:14px;
-margin:10px auto;
-max-width:1000px;
-}
-
-.breadcrumb a{
-text-decoration:none;
-color:var(--primary);
-font-weight:bold;
-}
-
-.breadcrumb a:hover{
-text-decoration:underline;
-}
-
 /* CONTAINER */
 .container{
 max-width:1000px;
@@ -140,15 +123,70 @@ font-size:16px;
 }
 
 /* FOOTER */
+.footer-content{
+max-width:1000px;
+margin:auto;
+text-align:center;
+}
+
+.footer-content h2{
+margin:0 0 20px 0;
+}
+
+.footer-links{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+}
+
+.footer-links a{
+display:flex;
+align-items:center;
+justify-content:center;
+width:45px;
+height:45px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.footer-links img{
+width:32px;
+height:32px;
+object-fit:contain;
+display:block;
+}
+
+.footer-links a:hover{
+transform:scale(1.15);
+}
+
+.copyright{
+margin-top:20px;
+padding-top:15px;
+border-top:1px solid rgba(255,255,255,0.25);
+font-size:13px;
+opacity:0.85;
+}
+
 footer{
 text-align:center;
-padding:20px;
+padding:30px 10px;
 color:white;
-background:url("img/header_footer.png");
+
+background:
+url("img/header_footer.png");
+
 background-size:cover;
-margin-top:auto;
+background-position:center;
+background-repeat:no-repeat;
+
+margin-top:40px;
 }
 </style>
+<link rel="canonical" href="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/proker.html">
+<meta property="og:title" content="Program Kerja HIMAFI"><meta property="og:type" content="website"><meta property="og:url" content="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/proker.html">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -160,11 +198,12 @@ margin-top:auto;
 <h1>Program Kerja HIMAFI</h1>
 <p>Himpunan Mahasiswa Fisika FMIPA Universitas Tadulako</p>
 </header>
+<button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Buka menu navigasi">☰</button>
 
-<div class="breadcrumb">
-<a href="index.html">Beranda</a> / Program Kerja
-</div>
-
+<div class="site-menu-backdrop" aria-hidden="true"></div>
+<nav class="site-menu" id="site-menu" aria-label="Menu utama">
+<a href="index.html">Beranda</a><a href="proker.html">Program Kerja</a><a href="anggota.html">Anggota</a>
+</nav>
 <div class="container">
 
 <div class="divisi">
@@ -178,21 +217,21 @@ margin-top:auto;
 <div class="logo-wrap">
 <img src="img/senior.png">
 </div>
-<a href="proker_senior.html">Divisi Seni & Olahraga</a>
+<a href="proker_senior.html">Divisi Seni & Olahraga (SENIOR)</a>
 </div>
 
 <div class="divisi">
 <div class="logo-wrap">
 <img src="img/pok.png">
 </div>
-<a href="proker_pok.html">Divisi Pengembangan Organisasi & Kaderisasi</a>
+<a href="proker_pok.html">Divisi Pengembangan Organisasi & Kaderisasi (POK)</a>
 </div>
 
 <div class="divisi">
 <div class="logo-wrap">
 <img src="img/keshan.png">
 </div>
-<a href="proker_keshan.html">Divisi Kesekretariatan & Kewirausahaan</a>
+<a href="proker_keshan.html">Divisi Kesekretariatan & Kewirausahaan (KESHAN)</a>
 </div>
 
 <div class="divisi">
@@ -206,14 +245,29 @@ margin-top:auto;
 <div class="logo-wrap">
 <img src="img/ikr.png">
 </div>
-<a href="proker_ikr.html">Divisi Informasi Komunikasi & Relasi</a>
+<a href="proker_ikr.html">Divisi Informasi Komunikasi & Relasi (IKR)</a>
 </div>
 
 </div>
 
-<footer>
-<p>© 2026 HIMAFI FMIPA Universitas Tadulako</p>
-</footer>
+<footer id="contact"><div class="footer-content"><h2>Hubungi Kami</h2><div class="footer-links">
+<a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="img/Instagram.png" alt="Instagram"></a>
+<a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="img/Tiktok.png" alt="TikTok"></a>
+<a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email"><img src="img/Gmail.png" alt="Email"></a>
+<a href="https://x.com/HimafiUntad" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="img/x.png" alt="X"></a>
+</div><p class="copyright">© 2026 HIMAFI FMIPA Universitas Tadulako</p></div></footer>
 
+<script>
+
+(() => {
+  const button=document.querySelector(".site-menu-toggle"), menu=document.querySelector(".site-menu"), backdrop=document.querySelector(".site-menu-backdrop");
+  if(!button||!menu||!backdrop)return;
+  const close=()=>{document.body.classList.remove("site-menu-open");button.setAttribute("aria-expanded","false");button.textContent="☰";button.setAttribute("aria-label","Buka menu navigasi")};
+  button.addEventListener("click",()=>{const open=document.body.classList.toggle("site-menu-open");button.setAttribute("aria-expanded",String(open));button.textContent=open?"×":"☰";button.setAttribute("aria-label",open?"Tutup menu navigasi":"Buka menu navigasi")});
+  backdrop.addEventListener("click",close); menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",close));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+})();
+
+</script>
 </body>
 </html>
