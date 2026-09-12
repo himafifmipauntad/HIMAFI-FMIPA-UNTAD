@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" href="img/HIMAFI.png">
 <link rel="shortcut icon" href="img/LOGO HIMAFI NO BG.png">
 <link rel="apple-touch-icon" href="img/LOGO HIMAFI NO BG.png">
-<meta name="description" content="Website resmi HIMAFI FMIPA Universitas Tadulako yang memuat kajian mahasiswa, analisis kebakaran Parigi Moutong, dan informasi ilmiah berbasis sains.">
+
 <style>
 
 :root{
@@ -95,24 +95,6 @@ text-align:justify;
 text-indent:0px;
 margin-bottom:15px;
 }
-
-.breadcrumb{
-padding: 0 15px;
-font-size:14px;
-margin:10px auto;
-max-width:1000px;
-}
-
-.breadcrumb a{
-text-decoration:none;
-color:var(--primary);
-font-weight:bold;
-}
-
-.breadcrumb a:hover{
-text-decoration:underline;
-}
-
 .container{
 max-width:1000px;
 margin:auto;
@@ -324,6 +306,9 @@ padding:10px;
 }
 
 </style>
+<link rel="canonical" href="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/kajian3.html">
+<meta property="og:title" content="Inovasi Fisika dan Teknologi Hijau Mendorong Industri Bertanggung Jawab Menuju SDGs 2030"><meta property="og:type" content="website"><meta property="og:url" content="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/kajian3.html">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -344,15 +329,12 @@ Universitas Tadulako
 </p>
 
 </header>
+<button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Buka menu navigasi">☰</button>
 
-<div class="breadcrumb">
-<a href="index.html">Beranda</a> > 
-<a href="proker.html">Program Kerja</a> >
-<a href="proker_akpem.html">AKPEM</a> >
-<a href="akpem_kajian.html">Kajian</a> >
-Inovasi Fisika dan Teknologi Hijau Mendorong Industri Bertanggung Jawab Menuju SDGs 2030
-</div>
-
+<div class="site-menu-backdrop" aria-hidden="true"></div>
+<nav class="site-menu" id="site-menu" aria-label="Menu utama">
+<a href="index.html">Beranda</a><a href="proker.html">Program Kerja</a><a href="anggota.html">Anggota</a>
+</nav>
 <div class="container">
 
 <h1>Inovasi Fisika dan Teknologi Hijau Mendorong Industri Bertanggung Jawab Menuju SDGs 2030</h1>
@@ -642,39 +624,24 @@ dalam laporan <a href=" https://iesr.or.id/dekarbonisasi-industri-dapat-mendoron
 
 
   
-<footer id="contact">
+<footer id="contact"><div class="footer-content"><h2>Hubungi Kami</h2><div class="footer-links">
+<a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="img/Instagram.png" alt="Instagram"></a>
+<a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="img/Tiktok.png" alt="TikTok"></a>
+<a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email"><img src="img/Gmail.png" alt="Email"></a>
+<a href="https://x.com/HimafiUntad" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="img/x.png" alt="X"></a>
+</div><p class="copyright">© 2026 HIMAFI FMIPA Universitas Tadulako</p></div></footer>
 
-<div class="footer-content">
+<script>
 
-<h2>Hubungi Kami</h2>
+(() => {
+  const button=document.querySelector(".site-menu-toggle"), menu=document.querySelector(".site-menu"), backdrop=document.querySelector(".site-menu-backdrop");
+  if(!button||!menu||!backdrop)return;
+  const close=()=>{document.body.classList.remove("site-menu-open");button.setAttribute("aria-expanded","false");button.textContent="☰";button.setAttribute("aria-label","Buka menu navigasi")};
+  button.addEventListener("click",()=>{const open=document.body.classList.toggle("site-menu-open");button.setAttribute("aria-expanded",String(open));button.textContent=open?"×":"☰";button.setAttribute("aria-label",open?"Tutup menu navigasi":"Buka menu navigasi")});
+  backdrop.addEventListener("click",close); menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",close));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+})();
 
-<div class="footer-links">
-
-<a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" aria-label="Instagram">
-<img src="img/Instagram.png" alt="Instagram">
-</a>
-
-<a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" aria-label="TikTok">
-<img src="img/Tiktok.png" alt="TikTok">
-</a>
-
-<a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email">
-<img src="img/Gmail.png" alt="Email">
-</a>
-
-<a href="https://x.com/HimafiUntad" target="_blank" aria-label="X">
-<img src="img/x.png" alt="X">
-</a>
-
-</div>
-
-<p class="copyright">
-© 2026 HIMAFI FMIPA Universitas Tadulako
-</p>
-
-</div>
-
-</footer>
-
+</script>
 </body>
 </html>
