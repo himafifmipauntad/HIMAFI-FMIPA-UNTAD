@@ -1,437 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HIMAFI FMIPA UNTAD</title>
-<meta name="author" content="HIMAFI FMIPA Universitas Tadulako">
-<meta name="description" content="Website resmi Himpunan Mahasiswa Fisika FMIPA Universitas Tadulako yang memuat kajian, kegiatan, dan informasi organisasi.">
-<meta name="keywords" content="HIMAFI, FMIPA, Universitas Tadulako, Himpunan Mahasiswa Fisika, UNTAD">
-<meta property="og:image" content="img/LOGO HIMAFI NO BG.png">
-<link rel="icon" type="image/png" href="img/HIMAFI.png">
-<link rel="shortcut icon" href="img/LOGO HIMAFI NO BG.png">
-<link rel="apple-touch-icon" href="img/LOGO HIMAFI NO BG.png">
-<meta name="description" content="Website resmi HIMAFI FMIPA Universitas Tadulako yang memuat kajian mahasiswa, analisis kebakaran Parigi Moutong, dan informasi ilmiah berbasis sains.">
-
-<style>
-
-:root{
---primary:#1f2f8f;
---secondary:#19c2c2;
---gradient:linear-gradient(to bottom,#1f2f8f,#19c2c2);
---hover:#16236b;
-}
-
-body{
-font-family:Arial;
-max-width:auto;
-width:auto;
-margin:auto;
-line-height:1.6;
-background:#f5f5f5;
-position:relative;
-}
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-
-background-image:url("img/LOGO HIMAFI NO BG.png");
-background-repeat:no-repeat;
-background-position:center;
-background-size:40%;
-
-opacity:0.2;
-z-index:-1;
-}
-
-header{
-position:relative;
-color:white;
-text-align:center;
-padding:40px 10px;
-
-/* gambar */
-background:url("img/header_footer.png");
-background-size:cover;
-background-repeat:no-repeat;
-
-/* INI KUNCINYA */
-background-position: top center;
-background-size: 108% auto;  /* zoom dikit tapi gak brutal */
-
-min-height:220px;
-box-shadow:0 3px 10px rgba(0,0,0,0.3);
-}
-
-footer{
-text-align:center;
-padding:30px 10px;
-color:white;
-
-background:
-url("img/header_footer.png");
-
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-
-margin-top:40px;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:15px;
-}
-
-.artikel{
-background:url("img/header_footer.png");
-padding:15px;
-margin-bottom:15px;
-border-radius:6px;
-border-left:5px solid var(--secondary);
-}
-
-.artikel p{
-color:rgba(255,255,255,0.85);
-}
-
-.artikel a{
-color:white;
-}
-
-.artikel a{
-color:white;
-font-weight:bold;
-text-decoration:none;
-}
-
-.logo-kiri{
-position:absolute;
-top:30px;
-left:35px;
-width:70px;
-}
-
-.logo-kanan{
-position:absolute;
-top:30px;
-right:35px;
-width:105px;
-}
-
-img{
-max-width:100%;
-height:auto;
-}
-
-.menu-toggle{
-position:absolute;
-left:15px;
-top:280px;
-font-size:26px;
-cursor:pointer;
-color:white;
-z-index:1000;
-transform:translateY(-50%);
-}
-
-#menu{
-display:none;
-flex-direction:column;
-background:url("img/header_footer.png");;
-position:absolute;
-top:260px;
-left:40px;
-width:200px;
-border-radius:5px;
-overflow:hidden;
-}
-
-#menu a{
-padding:10px;
-border-bottom:1px solid rgba(255,255,255,0.2);
-}
-
-#menu a:hover{
-background:gray;
-opacity:0.8;
-}
-
-@media (max-width:600px){
-
-h1{
-font-size:20px;
-}
-
-#map{
-height:250px;
-}
-
-nav a{
-font-size:14px;
-padding:8px 10px;
-}
-
-}
-
-nav{
-background: linear-gradient(to bottom, #2e4f7a, #1a2a44);
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-margin-bottom:20px;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-weight:bold;
-font-size:16px;
-
-padding:10px 18px;
-
-border-right:1px solid rgba(255,255,255,0.5);
-}
-
-nav a:last-child{
-border-right:none;
-}
-
-nav a:hover{
-background:rgba(255,255,255,0.2);
-color:#ffd700;
-}
-
-#menu{
-  position:relative;
-  width:100%;
-  left:0;
-  top:0;
-  transform:none;
-}
-
-.menu-toggle{
-  position:relative;
-  margin-top:10px;
-  top: 160px;
-  left:15px;
-  font-size:22px;
-}
-
-.footer-content{
-max-width:1000px;
-margin:auto;
-text-align:center;
-}
-
-.footer-content h2{
-margin:0 0 20px 0;
-}
-
-.footer-links{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:20px;
-}
-
-.footer-links a{
-display:flex;
-align-items:center;
-justify-content:center;
-width:45px;
-height:45px;
-text-decoration:none;
-transition:0.3s;
-}
-
-.footer-links img{
-width:32px;
-height:32px;
-object-fit:contain;
-display:block;
-}
-
-.footer-links a:hover{
-transform:scale(1.15);
-}
-
-.copyright{
-margin-top:20px;
-padding-top:15px;
-border-top:1px solid rgba(255,255,255,0.25);
-font-size:13px;
-opacity:0.85;
-}
-
-@media (max-width:768px){
-
-header{
-  min-height:160px;
-  padding:30px 10px;
-}
-
-header h1{
-  font-size:18px;
-}
-
-header p{
-  font-size:12px;
-}
-
-.logo-kiri{
-  width:30px;
-  left:10px;
-}
-
-.logo-kanan{
-  width:40px;
-  right:10px;
-}
-
-.menu-toggle{
-  position:relative;
-  margin-top:10px;
-  top: 160px;
-  left:15px;
-  font-size:22px;
-}
-
-.container{
-  padding:10px;
-}
-
-#menu{
-  position:relative;
-  width:100%;
-  left:0;
-  top:0;
-  transform:none;
-}
-
-}
-
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HIMAFI FMIPA UNTAD</title>
+  <meta name="author" content="HIMAFI FMIPA Universitas Tadulako">
+  <meta name="description" content="Website resmi Himpunan Mahasiswa Fisika FMIPA Universitas Tadulako yang memuat kajian, kegiatan, dan informasi organisasi.">
+  <meta name="keywords" content="HIMAFI, FMIPA, Universitas Tadulako, Himpunan Mahasiswa Fisika, UNTAD">
+  <meta property="og:image" content="img/LOGO HIMAFI NO BG.png">
+  <link rel="icon" type="image/png" href="img/HIMAFI.png">
+  <link rel="shortcut icon" href="img/LOGO HIMAFI NO BG.png">
+  <link rel="apple-touch-icon" href="img/LOGO HIMAFI NO BG.png">
+  <style>
+    :root { --navy:#1f2f8f; --teal:#19c2c2; --ink:#17253d; --paper:rgba(255,255,255,.94); --header:url("img/header_footer.png"); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { min-height:100vh; margin:0; display:flex; flex-direction:column; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:#f5f7fb; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; opacity:.06; pointer-events:none; background:url("img/LOGO HIMAFI NO BG.png") center / min(42vw,360px) no-repeat; }
+    a { color:inherit; }
+    .site-header { position:relative; isolation:isolate; color:#fff; text-align:center; background:var(--header) center / cover no-repeat; box-shadow:0 3px 10px rgba(0,0,0,.28); }
+    .site-header::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(9,27,74,.16),rgba(9,27,74,.03),rgba(9,27,74,.16)); }
+    .header-inner { width:min(100%,1120px); min-height:clamp(176px,24vw,250px); margin:auto; padding:clamp(24px,5vw,52px) clamp(82px,15vw,170px) clamp(22px,4vw,42px); display:grid; place-content:center; gap:9px; }
+    .brand-logo { position:absolute; top:50%; transform:translateY(-50%); display:block; object-fit:contain; filter:drop-shadow(0 2px 3px rgba(0,0,0,.2)); }
+    .logo-kiri { left:clamp(13px,4vw,42px); width:clamp(42px,7vw,82px); }
+    .logo-kanan { right:clamp(13px,4vw,42px); width:clamp(56px,9vw,112px); }
+    .site-title { margin:0; font-size:clamp(1.25rem,3.4vw,2.1rem); line-height:1.18; letter-spacing:.02em; text-wrap:balance; }
+    .site-tagline { margin:0; font-size:clamp(.76rem,1.75vw,1rem); line-height:1.55; text-wrap:balance; }
+    .menu-toggle { position:absolute; left:clamp(12px,3vw,32px); bottom:12px; display:grid; width:44px; height:40px; place-items:center; padding:0; color:#fff; cursor:pointer; border:1px solid rgba(255,255,255,.65); border-radius:8px; background:rgba(9,28,78,.42); font:700 1.3rem/1 Arial,sans-serif; }
+    .menu-toggle:hover, .menu-toggle:focus-visible { background:rgba(255,255,255,.2); outline:2px solid #fff; outline-offset:2px; }
+    .menu-backdrop { position:fixed; inset:0; z-index:20; visibility:hidden; opacity:0; background:rgba(4,13,32,.55); transition:opacity .25s,visibility .25s; }
+    .site-nav { position:fixed; z-index:30; inset:0 auto 0 0; width:min(82vw,310px); padding:24px 18px; transform:translateX(-101%); color:#fff; background:var(--header) center / cover no-repeat; box-shadow:8px 0 24px rgba(0,0,0,.3); transition:transform .25s ease; }
+    .site-nav::before { content:"Menu"; display:block; padding:5px 8px 18px; border-bottom:1px solid rgba(255,255,255,.28); font-size:1.22rem; font-weight:700; }
+    .nav-inner { display:flex; flex-direction:column; padding-top:15px; }
+    .site-nav a { padding:14px 12px; color:#fff; text-decoration:none; font-weight:700; border-radius:8px; }
+    .site-nav a:hover, .site-nav a:focus-visible { color:#fff; background:rgba(255,255,255,.17); outline:2px solid rgba(255,255,255,.75); outline-offset:-2px; }
+    body.menu-open { overflow:hidden; }
+    body.menu-open .menu-backdrop { visibility:visible; opacity:1; }
+    body.menu-open .site-nav { transform:translateX(0); }
+    main { flex:1; width:min(100% - 32px,1000px); margin:0 auto; padding:clamp(28px,5vw,52px) 0; }
+    .section { margin:0 0 clamp(30px,5vw,54px); }
+    .section-title { margin:0 0 18px; color:var(--navy); font-size:clamp(1.35rem,2.6vw,1.8rem); }
+    .about-card { padding:clamp(20px,4vw,32px); border-radius:14px; border-left:6px solid var(--teal); background:var(--paper); box-shadow:0 8px 24px rgba(23,37,61,.08); }
+    .about-card p { margin:.35rem 0 0; line-height:1.75; }
+    .about-note { margin-top:16px !important; padding-top:16px; border-top:1px solid #dce4ef; color:#506078; font-size:.9rem; }
+    .news-list { display:grid; gap:15px; }
+    .artikel { padding:20px; border-radius:10px; border-left:5px solid var(--teal); color:#fff; background:linear-gradient(rgba(8,18,40,.62),rgba(8,18,40,.62)),var(--header) center / cover; box-shadow:0 5px 15px rgba(23,37,61,.16); }
+    .artikel a { display:inline-block; color:#fff; font-size:clamp(1rem,2vw,1.16rem); font-weight:700; line-height:1.4; text-decoration:none; }
+    .artikel a:hover, .artikel a:focus-visible { color:#fff4a3; text-decoration:underline; }
+    .artikel p { margin:9px 0 0; color:rgba(255,255,255,.93); line-height:1.55; }
+    .empty-news { padding:20px; border-radius:10px; background:var(--paper); color:#506078; }
+    footer { margin-top:auto; padding:28px 16px 16px; color:#fff; text-align:center; background:var(--header) center / cover no-repeat; }
+    .footer-content { width:min(100%,1000px); margin:auto; }
+    .footer-content h2 { margin:0 0 17px; font-size:1.35rem; }
+    .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; }
+    .footer-links a { display:grid; width:45px; height:45px; place-items:center; border-radius:50%; transition:transform .2s,background .2s; }
+    .footer-links a:hover, .footer-links a:focus-visible { transform:translateY(-3px) scale(1.06); background:rgba(255,255,255,.17); outline:2px solid #fff; outline-offset:2px; }
+    .footer-links img { width:30px; height:30px; object-fit:contain; }
+    .copyright { margin:20px 0 0; padding-top:15px; border-top:1px solid rgba(255,255,255,.3); font-size:.82rem; opacity:.9; }
+    @media (max-width:640px) {
+      .header-inner { min-height:190px; padding-inline:70px; padding-bottom:50px; }
+      .brand-logo { top:20px; transform:none; }
+      .logo-kiri { left:14px; width:42px; }
+      .logo-kanan { right:14px; width:54px; }
+    }
+    @media (max-width:360px) { .header-inner { padding-inline:62px; } .site-title { font-size:1.08rem; } .site-tagline { font-size:.68rem; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; } }
+  </style>
+<link rel="canonical" href="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/">
+<meta property="og:title" content="HIMAFI FMIPA UNTAD"><meta property="og:type" content="website"><meta property="og:url" content="https://himafifmipauntad.github.io/HIMAFI-FMIPA-UNTAD/">
 </head>
-
 <body>
-
-<header>
-
-<img src="img/LOGO OUTLINE UNTAD.png" class="logo-kiri">
-<img src="img/logo himafi outline.png" class="logo-kanan">
-
-<div class="menu-toggle" onclick="toggleMenu()">
-☰
-</div>
-
-<h1>HIMAFI FMIPA UNTAD</h1>
-
-<p>
-Himpunan Mahasiswa Fisika<br> 
-Fakultas Matematika dan Ilmu Pengetahuan Alam<br>  
-Universitas Tadulako
-</p>
-
-</header>
-
-<nav id="menu">
-<a href="proker.html">Program Kerja</a>
-<a href="anggota.html">Anggota</a>
-</nav>
-
-<div class="container">
-
-<h2>Informasi Terbaru</h2>
-
-<div class="artikel">
-
-<a href="kajian1.html">
-Kebakaran di Parigi Moutong
-</a>
-
-<p>Analisis awal terhadap kebakaran yang terjadi di wilayah Parigi.</p>
-
-</div>
-
-
-<div class="artikel">
-
-<a href="kajian2.html">
-Permasalahan Sampah di Kota Palu: Kajian Dampak Lingkungan dan Solusi dalam Perspektif Fisika
-</a>
-
-<p> </p>
-
-</div>
-
-
-<div class="artikel">
-
-<a href="kajian3.html">
-Inovasi Fisika dan Teknologi Hijau Mendorong Industri Bertanggung Jawab Menuju SDGs 2030
-</a>
-
-<p>Accelerating Sustainanble Inovation: Physics, Green Technology and Responsible Industry for SDGs 2030</p>
-
-</div>
-
-</div>
-</script>
-
-<footer id="contact">
-
-<div class="footer-content">
-
-<h2>Hubungi Kami</h2>
-
-<div class="footer-links">
-
-<a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" aria-label="Instagram">
-<img src="img/Instagram.png" alt="Instagram">
-</a>
-
-<a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" aria-label="TikTok">
-<img src="img/Tiktok.png" alt="TikTok">
-</a>
-
-<a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email">
-<img src="img/Gmail.png" alt="Email">
-</a>
-
-<a href="https://x.com/HimafiUntad" target="_blank" aria-label="X">
-<img src="img/x.png" alt="X">
-</a>
-
-</div>
-
-<p class="copyright">
-© 2026 HIMAFI FMIPA Universitas Tadulako
-</p>
-
-</div>
-
-</footer>
-
-<script>
-function toggleMenu(){
-var menu = document.getElementById("menu");
-
-if(menu.style.display === "flex"){
-menu.style.display = "none";
-}else{
-menu.style.display = "flex";
-}
-}
-</script>
-
+  <header class="site-header">
+    <img src="img/LOGO OUTLINE UNTAD.png" class="brand-logo logo-kiri" alt="Logo Universitas Tadulako">
+    <img src="img/logo himafi outline.png" class="brand-logo logo-kanan" alt="Logo HIMAFI">
+    <div class="header-inner">
+      <h1 class="site-title">HIMAFI FMIPA UNTAD</h1>
+      <p class="site-tagline">Himpunan Mahasiswa Fisika<br>Fakultas Matematika dan Ilmu Pengetahuan Alam<br>Universitas Tadulako</p>
+    </div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Buka menu navigasi">☰</button>
+  </header>
+  <div class="menu-backdrop" aria-hidden="true"></div>
+  <nav class="site-nav" id="menu" aria-label="Menu utama">
+      <a href="proker.html">Program Kerja</a>
+      <a href="anggota.html">Anggota</a>
+    </nav>
+  <main>
+    <section class="section" aria-labelledby="tentang-title">
+      <h2 class="section-title" id="tentang-title">Tentang HIMAFI</h2>
+      <div class="about-card">
+        <!-- Edit teks pada paragraf berikut untuk mengubah deskripsi organisasi. -->
+        <p>HIMAFI FMIPA UNTAD adalah wadah bagi mahasiswa Fisika Universitas Tadulako untuk bertumbuh, berkarya, dan berkontribusi melalui kegiatan keilmuan, pengembangan minat bakat, serta pengabdian kepada masyarakat.</p>
+        <p class="about-note">Bagian ini sengaja dipisahkan agar deskripsi organisasi dapat diubah dengan cepat tanpa memengaruhi bagian lain pada halaman.</p>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="informasi-title">
+      <h2 class="section-title" id="informasi-title">Informasi Terbaru</h2>
+      <div class="news-list" id="news-list" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer id="contact">
+    <div class="footer-content">
+      <h2>Hubungi Kami</h2>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/himafi.fmipa.untad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="img/Instagram.png" alt="Instagram"></a>
+        <a href="https://www.tiktok.com/@himafi.fmipa.untad" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="img/Tiktok.png" alt="TikTok"></a>
+        <a href="mailto:himafifmipauntad101@gmail.com" aria-label="Email"><img src="img/Gmail.png" alt="Email"></a>
+        <a href="https://x.com/HimafiUntad" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="img/x.png" alt="X"></a>
+      </div>
+      <p class="copyright">© 2026 HIMAFI FMIPA Universitas Tadulako</p>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const fallbackNews = [
+        { title: "Kebakaran di Parigi Moutong", description: "Analisis awal terhadap kebakaran yang terjadi di wilayah Parigi.", url: "kajian1.html" },
+        { title: "Permasalahan Sampah di Kota Palu: Kajian Dampak Lingkungan dan Solusi dalam Perspektif Fisika", description: "", url: "kajian2.html" },
+        { title: "Inovasi Fisika dan Teknologi Hijau Mendorong Industri Bertanggung Jawab Menuju SDGs 2030", description: "", url: "kajian3.html" }
+      ];
+      const list = document.getElementById("news-list");
+      const safeText = value => String(value || "").trim();
+      function renderNews(items) {
+        list.replaceChildren();
+        if (!Array.isArray(items) || !items.length) {
+          const empty = document.createElement("p"); empty.className = "empty-news"; empty.textContent = "Belum ada informasi untuk ditampilkan."; list.append(empty); return;
+        }
+        items.forEach(item => {
+          const title = safeText(item.title); const url = safeText(item.url); if (!title || !url) return;
+          const card = document.createElement("article"); card.className = "artikel";
+          const link = document.createElement("a"); link.href = url; link.textContent = title;
+          card.append(link);
+          const description = safeText(item.description);
+          if (description) { const text = document.createElement("p"); text.textContent = description; card.append(text); }
+          list.append(card);
+        });
+        if (!list.children.length) renderNews([]);
+      }
+      renderNews(fallbackNews);
+      // GitHub Pages: edit informasi.json saja; halaman ini akan memuatnya otomatis saat dibuka.
+      // Untuk Google Sheets/API, ganti "informasi.json" dengan URL publik yang mengembalikan array JSON berformat sama.
+      fetch("informasi.json", { cache: "no-cache" })
+        .then(response => response.ok ? response.json() : Promise.reject(new Error("Data berita belum tersedia")))
+        .then(renderNews)
+        .catch(() => { /* daftar bawaan tetap tampil jika JSON belum ada atau koneksi gagal */ });
+      const button = document.querySelector(".menu-toggle");
+      const nav = document.querySelector(".site-nav");
+      const backdrop = document.querySelector(".menu-backdrop");
+      function closeMenu() { document.body.classList.remove("menu-open"); button.setAttribute("aria-expanded", "false"); button.textContent = "☰"; button.setAttribute("aria-label", "Buka menu navigasi"); }
+      button.addEventListener("click", () => {
+        const open = document.body.classList.toggle("menu-open"); button.setAttribute("aria-expanded", String(open)); button.textContent = open ? "×" : "☰"; button.setAttribute("aria-label", open ? "Tutup menu navigasi" : "Buka menu navigasi");
+      });
+      backdrop.addEventListener("click", closeMenu);
+      nav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
+    })();
+  </script>
 </body>
 </html>
