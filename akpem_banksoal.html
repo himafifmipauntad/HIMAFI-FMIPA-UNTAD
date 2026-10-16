@@ -88,9 +88,10 @@ box-shadow:0 4px 12px rgba(0,0,0,0.2);
 
 .login-box input{
 padding:10px;
-width:200px;
+width:min(100%,320px);
 border-radius:6px;
 border:1px solid #ccc;
+box-sizing:border-box;
 }
 
 .login-box button{
@@ -105,6 +106,23 @@ cursor:pointer;
 .login-box button:hover{
 background:#16236b;
 }
+
+.login-box label{
+display:block;
+max-width:320px;
+margin:14px auto 6px;
+text-align:left;
+font-weight:bold;
+}
+
+.login-message{
+min-height:20px;
+margin:14px 0 0;
+font-size:14px;
+}
+
+.login-message.error{color:#b42318;}
+.login-message.success{color:#087443;}
 
 /* FILE CARD */
 .file-card{
@@ -214,14 +232,21 @@ margin-top:40px;
 </nav>
 <div class="container">
 
-<!-- LOGIN -->
+<!-- LOGIN: kredensial hanya diverifikasi oleh Google Apps Script -->
 <div id="loginBox" class="login-box">
 <h2>Akses Bank Soal</h2>
-<p>Masukkan kode akses yang diberikan</p>
+<p>Masukkan NIM dan password pribadi Anda.</p>
 
-<input type="password" id="password" placeholder="Kode akses">
+<form id="loginForm">
+<label for="nim">NIM</label>
+<input type="text" id="nim" name="nim" placeholder="Contoh: G10123001" autocomplete="username" required>
+
+<label for="password">Password</label>
+<input type="password" id="password" name="password" placeholder="Password pribadi" autocomplete="current-password" required>
 <br><br>
-<button onclick="cekLogin()">Masuk</button>
+<button id="loginButton" type="submit">Masuk</button>
+</form>
+<p id="loginMessage" class="login-message" role="status" aria-live="polite"></p>
 </div>
 
 <!-- KONTEN BANK SOAL -->
@@ -231,50 +256,107 @@ margin-top:40px;
 
 </div>
 <script>
+/*
+ * Tempel URL Web App Google Apps Script setelah dideploy.
+ * URL ini bersifat publik dan bukan rahasia; password tetap hanya berada di Sheets/Apps Script.
+ */
+const BANK_SOAL_API_URL = "https://script.google.com/macros/s/AKfycbxaZQ2QywCFPblsQQWzSdCyKeLVrfIw0TOsfGfTn8bIj-MTckZNaJnalTNuh6iao7JB/exec";
+const SESSION_KEY = "himafi-bank-soal-session";
 
-// 🔒 PASSWORD GLOBAL
-const PASSWORD = "himafi2026";
+const loginBox = document.getElementById("loginBox");
+const content = document.getElementById("konten");
+const loginForm = document.getElementById("loginForm");
+const loginButton = document.getElementById("loginButton");
+const loginMessage = document.getElementById("loginMessage");
 
-// LOGIN FUNCTION
-function cekLogin(){
-const input = document.getElementById("password").value;
-
-if(input === PASSWORD){
-document.getElementById("loginBox").style.display = "none";
-document.getElementById("konten").style.display = "block";
-loadData();
-}else{
-alert("Kode salah!");
+function showMessage(message, type = "") {
+  loginMessage.textContent = message;
+  loginMessage.className = `login-message ${type}`;
 }
+
+function escapeHtml(value) {
+  const element = document.createElement("div");
+  element.textContent = String(value || "");
+  return element.innerHTML;
 }
 
-// LOAD DATA DARI GOOGLE SHEETS
-function loadData(){
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vQmUQd5BpNJWyTbcuHfIe9PQiSNJ_hw92pizz8DbPilZCX_TMcjCuj1zR6Wap33PFfHTG3svgOFSY3s/pub?output=csv")
-.then(res=>res.text())
-.then(data=>{
-const rows=data.split("\n").slice(1);
+async function callBankSoalApi(payload) {
+  if (!BANK_SOAL_API_URL.startsWith("https://script.google.com/")) {
+    throw new Error("URL backend belum diatur.");
+  }
 
-let html="";
+  const response = await fetch(BANK_SOAL_API_URL, {
+    method: "POST",
+    body: new URLSearchParams(payload)
+  });
 
-rows.forEach(row=>{
-const col=row.split(",");
-
-if(col[0] && col[1]){
-html+=`
-<div class="file-card">
-<a href="${col[1]}" target="_blank">
-📄 ${col[0]}
-</a>
-</div>
-`;
+  if (!response.ok) throw new Error("Server tidak dapat dihubungi.");
+  return response.json();
 }
+
+async function loadData(token) {
+  const container = document.getElementById("banksoal-container");
+  container.innerHTML = "<p>Memuat Bank Soal…</p>";
+
+  const result = await callBankSoalApi({ action: "files", token });
+  if (!result.ok) throw new Error(result.message || "Sesi akses sudah berakhir.");
+
+  if (!result.files || result.files.length === 0) {
+    container.innerHTML = "<p>Belum ada file Bank Soal.</p>";
+    return;
+  }
+
+  container.innerHTML = result.files.map(file => `
+    <div class="file-card">
+      <a href="${escapeHtml(file.url)}" target="_blank" rel="noopener noreferrer">📄 ${escapeHtml(file.title)}</a>
+    </div>
+  `).join("");
+}
+
+async function openBankSoal(session) {
+  loginBox.style.display = "none";
+  content.style.display = "block";
+  try {
+    await loadData(session.token);
+  } catch (error) {
+    sessionStorage.removeItem(SESSION_KEY);
+    content.style.display = "none";
+    loginBox.style.display = "block";
+    showMessage(error.message || "Tidak dapat memuat Bank Soal.", "error");
+  }
+}
+
+loginForm.addEventListener("submit", async event => {
+  event.preventDefault();
+  const nim = document.getElementById("nim").value.trim().toUpperCase();
+  const password = document.getElementById("password").value;
+  loginButton.disabled = true;
+  showMessage("Memverifikasi akses…");
+
+  try {
+    const result = await callBankSoalApi({ action: "login", nim, password });
+    if (!result.ok || !result.token || !result.expiresAt) {
+      throw new Error(result.message || "NIM atau password salah.");
+    }
+    const session = { token: result.token, expiresAt: result.expiresAt };
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    showMessage("Login berhasil.", "success");
+    await openBankSoal(session);
+  } catch (error) {
+    showMessage(error.message || "NIM atau password salah.", "error");
+  } finally {
+    loginButton.disabled = false;
+  }
 });
 
-document.getElementById("banksoal-container").innerHTML=html;
-});
+// Pertahankan akses selama tab browser yang sama, sampai token kedaluwarsa.
+try {
+  const session = JSON.parse(sessionStorage.getItem(SESSION_KEY));
+  if (session && session.token && Date.now() < Number(session.expiresAt)) openBankSoal(session);
+  else sessionStorage.removeItem(SESSION_KEY);
+} catch (_) {
+  sessionStorage.removeItem(SESSION_KEY);
 }
-
 </script>
 
 <footer id="contact"><div class="footer-content"><h2>Hubungi Kami</h2><div class="footer-links">
