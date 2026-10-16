@@ -451,21 +451,69 @@ function bukaKategori(kategori) {
   );
 
   if (daftar.length === 0) {
-    container.innerHTML = `
-      <p>Belum ada file untuk kategori ini.</p>
-    `;
+    container.innerHTML = `<p>Belum ada file untuk kategori ini.</p>`;
     return;
   }
 
-  container.innerHTML = daftar.map(file => `
-    <div class="file-card">
-      <a href="${escapeHtml(file.url)}"
-         target="_blank"
-         rel="noopener noreferrer">
-        📄 ${escapeHtml(file.title)}
-      </a>
-    </div>
-  `).join("");
+  container.innerHTML = daftar.map(file => {
+    const url = String(file.url || "");
+    const title = escapeHtml(file.title);
+    const isITB = kategori.toLowerCase() === "itb";
+
+    // Ambil ID file Google Drive dari URL.
+    const match = url.match(
+      /drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/
+    );
+
+    // Video ITB: sematkan jika berupa file Google Drive.
+    if (isITB && match) {
+      const previewUrl =
+        "https://drive.google.com/file/d/" +
+        match[1] +
+        "/preview";
+
+      return `
+        <div class="file-card">
+          <h3>${title}</h3>
+          <div style="
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+          ">
+            <iframe
+              src="${previewUrl}"
+              title="${title}"
+              style="width:100%;height:100%;border:0;"
+              allow="autoplay; fullscreen"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <p>
+            <a href="${escapeHtml(url)}"
+               target="_blank"
+               rel="noopener noreferrer">
+              Buka video di Google Drive
+            </a>
+          </p>
+        </div>
+      `;
+    }
+
+    // File kategori Kampus tetap menggunakan tautan biasa.
+    return `
+      <div class="file-card">
+        <a href="${escapeHtml(url)}"
+           target="_blank"
+           rel="noopener noreferrer">
+          📄 ${title}
+        </a>
+      </div>
+    `;
+  }).join("");
 }
 
 function kembaliKategori() {
