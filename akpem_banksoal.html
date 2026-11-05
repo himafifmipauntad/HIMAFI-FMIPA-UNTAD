@@ -467,11 +467,11 @@ container.innerHTML = daftar.map(file => {
 
   // Jika file berasal dari Google Drive, tampilkan langsung
   if (match) {
-    const previewUrl =
-      "https://drive.google.com/file/d/" +
-      match[1] +
-      "/preview";
-
+const previewUrl =
+  "https://drive.google.com/file/d/" +
+  match[1] +
+  "/preview";
+    
     return `
       <div class="file-card">
         <h3>${title}</h3>
