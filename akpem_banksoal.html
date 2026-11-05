@@ -461,9 +461,9 @@ container.innerHTML = daftar.map(file => {
   const title = escapeHtml(file.title);
 
   // Ambil ID file Google Drive
-  const match = url.match(
-    /drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/
-  );
+ const match = url.match(
+  /(?:drive\.google\.com\/file\/d\/|docs\.google\.com\/(?:presentation|document|spreadsheets)\/d\/)([a-zA-Z0-9_-]+)/
+);
 
   // Jika file berasal dari Google Drive, tampilkan langsung
   if (match) {
